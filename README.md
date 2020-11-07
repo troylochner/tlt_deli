@@ -1,2 +1,3 @@
 # tlt_proj_two
-Placeholder Repo - Details to be updated 
+A simple deli tracking application. 
+This application will handle in-store tables(parties) as well as online orders. 
