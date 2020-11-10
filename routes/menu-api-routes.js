@@ -26,6 +26,18 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/menuitems/:id", (req, res) => {
+    db.menuItem
+      .update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(item => {
+        res.json(item);
+      });
+  });
+
   app.delete("/api/menuitems/:id", (req, res) => {
     db.menuItem
       .destroy({
