@@ -3,6 +3,11 @@ module.exports = function(sequelize, DataTypes) {
     tableNumber: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    tableStatus: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false
     }
   });
   return tableTop;

@@ -16,5 +16,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL(10, 2)
     }
   });
+
+  /*
+  menuItem.associate = function(models) {
+    menuItem.belongsToMany(models.Order, { through: "orderMenu" });
+  };*/
+
   return menuItem;
 };
