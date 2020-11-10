@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     tableStatus: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
       default: false
     }
   });
