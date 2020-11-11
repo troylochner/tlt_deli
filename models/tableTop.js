@@ -9,5 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       default: false
     }
   });
+
   return tableTop;
 };
