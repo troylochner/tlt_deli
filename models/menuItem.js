@@ -21,10 +21,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  /*
   menuItem.associate = function(models) {
-    menuItem.belongsToMany(models.Order, { through: "orderMenu" });
-  };*/
+    menuItem.hasMany(models.Order, {
+      foreignKey: "idMenuItem"
+    });
+  };
 
   return menuItem;
 };

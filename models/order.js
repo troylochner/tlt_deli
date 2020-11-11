@@ -16,11 +16,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL(10, 2)
     }
   });
-  /*
+
   Order.associate = function(models) {
-    Order.belongsToMany(models.menuItem, { through: "orderMenu" });
+    Order.hasMany(models.tableTop, {
+      foreignKey: "idOrder"
+    });
   };
-  */
 
   return Order;
 };
