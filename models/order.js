@@ -14,8 +14,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   order.associate = function(models) {
-    order.hasMany(models.tableTop, {
-      foreignKey: "idOrder"
+    order.belongsToMany(models.menuItem, {
+      through: models.orderMenuItem
+    });
+    order.belongsToMany(models.tableTop, {
+      through: models.tableTopOrder
     });
   };
 
