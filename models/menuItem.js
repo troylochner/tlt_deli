@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   menuItem.associate = function(models) {
-    menuItem.hasMany(models.Order, {
+    menuItem.hasMany(models.order, {
       foreignKey: "idMenuItem"
     });
   };

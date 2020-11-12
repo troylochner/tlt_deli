@@ -1,27 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
-  const Order = sequelize.define("Order", {
-    item: {
+  const order = sequelize.define("order", {
+    custName: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      allowNull: true
     },
-    description: {
+    email: {
       type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
+      allowNull: true
     },
-    price: {
+    orderTotal: {
       type: DataTypes.DECIMAL(10, 2)
     }
   });
 
-  Order.associate = function(models) {
-    Order.hasMany(models.tableTop, {
+  order.associate = function(models) {
+    order.hasMany(models.tableTop, {
       foreignKey: "idOrder"
     });
   };
 
-  return Order;
+  return order;
 };
