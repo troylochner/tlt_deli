@@ -20,12 +20,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL(10, 2)
     }
   });
+<<<<<<< Updated upstream
 
   menuItem.associate = models => {
     menuItem.belongsToMany(models.order, {
       through: "orderMenuItem",
       as: "orders",
       foreignKey: "menuItemId"
+=======
+  menuItem.associate = function(models) {
+    menuItem.hasMany(models.Order, {
+      foreignKey: "idMenuItem"
+>>>>>>> Stashed changes
     });
   };
   return menuItem;
