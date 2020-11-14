@@ -15,7 +15,13 @@ module.exports = function(app) {
         where: {
           id: req.params.id
         },
-        include: [db.orderMenuItem]
+        include: [
+          {
+            model: db.menuItem,
+            as: "menuItems",
+            required: false
+          }
+        ]
       })
       .then(item => {
         res.json(item);

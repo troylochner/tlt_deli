@@ -25,16 +25,8 @@ module.exports = function(sequelize, DataTypes) {
     menuItem.belongsToMany(models.order, {
       through: "orderMenuItem",
       as: "orders",
-      foreignKey: "menuItemId",
-      unique: false
+      foreignKey: "menuItemId"
     });
   };
-
-  /*menuItem.associate = function(models) {
-    menuItem.belongsToMany(models.order, {
-      through: models.orderMenuItem
-    });
-  };*/
-
   return menuItem;
 };
