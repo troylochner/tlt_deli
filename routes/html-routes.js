@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   //ADDED PATH TO GET MENU ITEMS + ORDERS + TABLES
-  app.get("/meun", (req, res) => {
+  app.get("/menu", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/menu.html"));
   });
 

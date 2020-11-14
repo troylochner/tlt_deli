@@ -8,6 +8,7 @@ module.exports = function(app) {
     });
   });
 
+  //DO NOT USE THIS ENPOINT RIGHT NOW
   app.get("/api/orders/:id", (req, res) => {
     db.order
       .findOne({
