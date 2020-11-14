@@ -10,5 +10,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  tableTop.associate = function(models) {
+    tableTop.belongsToMany(models.order, {
+      through: models.tableTopOrder
+    });
+  };
+
   return tableTop;
 };
