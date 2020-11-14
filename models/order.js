@@ -13,14 +13,24 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  order.associate = function(models) {
+  order.associate = models => {
     order.belongsToMany(models.menuItem, {
-      through: models.orderMenuItem
+      through: "orderMenuItem",
+      as: "menuItems",
+      foreignKey: "orderId",
+      unique: false
+    });
+  };
+
+  /*order.associate = function(models) {
+    order.belongsToMany(models.menuItem, {
+      through: models.orderMenuItem,
+      unique: false
     });
     order.belongsToMany(models.tableTop, {
       through: models.tableTopOrder
     });
-  };
+  };*/
 
   return order;
 };

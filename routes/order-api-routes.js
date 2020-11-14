@@ -13,7 +13,8 @@ module.exports = function(app) {
       .findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: [db.orderMenuItem]
       })
       .then(item => {
         res.json(item);
