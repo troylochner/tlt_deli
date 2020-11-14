@@ -26,6 +26,18 @@ module.exports = function(app) {
     });
   });
 
+  //ADD ITEM TO AN ORDER
+  app.post("/api/orders/:id/add", (req, res) => {
+    db.orderMenuItem
+      .create({
+        orderId: req.params.id,
+        menuItemId: req.body.menuItemId
+      })
+      .then(results => {
+        res.json(results);
+      });
+  });
+
   app.put("/api/orders/:id", (req, res) => {
     db.order
       .update(req.body, {
