@@ -21,6 +21,19 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+  //ADDED PATH TO GET MENU ITEMS + ORDERS + TABLES
+  app.get("/meun", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/menu.html"));
+  });
+
+  app.get("/tables", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/tables.html"));
+  });
+
+  app.get("/orders", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/orders.html"));
+  });
+
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
