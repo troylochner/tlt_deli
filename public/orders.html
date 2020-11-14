@@ -14,16 +14,23 @@
 <body>
 
 	<div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-3" style="text-align: center; padding: 20px;">
+        
+      <h2>All Orders</h2>
+      </div>
+    </div>
 		<div class="row">
-			<div class="col-md-12 col-md-offset-3">
+			<div class="col-md-6 col-md-offset-3">
                 <div class="card">
-                    <h5 class="card-header">All Orders</h5>
+                    <h5 class="card-header">Open Orders</h5>
                     <div class="card-body">
                         <table class="table table-bordered" id="orders">
                             <thead>
                               <tr>
-                                <th scope="col" id="Open">Open Orders</th>
-                                <th scope="col" id="Close">Closed Orders</th>
+                                <th scope="col" id="orderName">Customer Name</th>
+                                <th scope="col" id="orderEmail">Customer Email</th>
+                                <th scope="col" id="ordeStatus">Order Status</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -31,7 +38,26 @@
                           </table>
                     </div>
                   </div>      
-			</div>
+      </div>
+      <div class="col-md-6 col-md-offset-3">
+        <div class="card">
+            <h5 class="card-header">Closed Orders</h5>
+            <div class="card-body">
+                <table class="table table-bordered" id="orders2">
+                    <thead>
+                      <tr>
+                        <th scope="col" id="orderName2">Customer Name</th>
+                        <th scope="col" id="orderEmail2">Customer Email</th>
+                        <th scope="col" id="ordeStatus2">Order Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                   
+                  </table>
+            </div>
+          </div>      
+</div>
+
 		</div>
 	</div>
 </body>
