@@ -26,6 +26,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/menu.html"));
   });
 
+  app.get("/neworder", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/orderForm.html"));
+  });
+
   app.get("/tables", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/tables.html"));
   });

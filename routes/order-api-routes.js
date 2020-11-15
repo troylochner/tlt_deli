@@ -2,9 +2,17 @@
 const db = require("../models");
 
 module.exports = function(app) {
+  // GET ALL ORDERS IN THE SYSTEM
   app.get("/api/orders", (req, res) => {
     db.order.findAll({}).then(items => {
       res.json(items);
+    });
+  });
+
+  //BEGIN AN ORDER -- NOTE : DEFINE THE INPUT FIELDS - THIS CURRENT METHOD ALLOWS FOR TOO MUCH VARIATION
+  app.post("/api/orders", (req, res) => {
+    db.order.create(req.body).then(item => {
+      res.json(item);
     });
   });
 
@@ -26,12 +34,6 @@ module.exports = function(app) {
       .then(item => {
         res.json(item);
       });
-  });
-
-  app.post("/api/orders", (req, res) => {
-    db.order.create(req.body).then(item => {
-      res.json(item);
-    });
   });
 
   //ADD ITEM TO AN ORDER
