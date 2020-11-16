@@ -16,20 +16,44 @@ module.exports = function(app) {
     });
   });
 
-  //DO NOT USE THIS ENPOINT RIGHT NOW
-  app.get("/api/orders/:id", (req, res) => {
+ //GET ORDER HEADLINE INFO
+ app.get("/api/orders/:id", (req, res) => {
+  db.order
+  .findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(results => {
+      res.json(results);
+    });
+});
+
+//UPDATE ORDER
+app.put("/api/orders/:id", (req, res) => {
+  db.order
+    .update({
+        custName: req.body.custName,
+        email: req.body.email,
+        orderStatus: req.body.orderStatus,
+      }, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(results => {
+      res.json(results);
+    });
+});
+
+
+  //LISTS INDIVIDUAL ITEMS IN AN ORDER
+  app.get("/api/orders/:id/items", (req, res) => {
     db.orderMenuItem
     .findAll({
         where: {
           orderId: req.params.id
         },
-        /*include: [
-          {
-            model: db.order,
-            as: "order",
-            where:{id:req.params.id }
-          }
-        ]*/
       })
       .then(item => {
         res.json(item);
@@ -37,8 +61,7 @@ module.exports = function(app) {
   });
 
 
-  //ADD ITEM TO AN ORDER
-
+  //ADD SINGLE ITEMS TO AN ORDER
   app.post("/api/orders/:id/add", (req, res) => {
     var itemSubTotal = ( req.body.qty * req.body.price);
     db.orderMenuItem
@@ -53,6 +76,7 @@ module.exports = function(app) {
       });
   });
 
+  //GET THE TOTAL OF THE ORDER
   app.get("/api/orders/:id/total", (req, res) => {
     db.orderMenuItem
       .sum("itemSubtotal",{
@@ -65,18 +89,7 @@ module.exports = function(app) {
       });
   });
 
-  app.put("/api/orders/:id", (req, res) => {
-    db.order
-      .update(req.body, {
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(item => {
-        res.json(item);
-      });
-  });
-
+//DELETE AN ORDER
   app.delete("/api/orders/:id", (req, res) => {
     db.order
       .destroy({
