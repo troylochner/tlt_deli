@@ -9,6 +9,17 @@ module.exports = function(app) {
     });
   });
 
+    // GET ALL ORDERS BY STATUS
+    app.get("/api/orders/status/:status", (req, res) => {
+      db.order.findAll({
+        where:{
+          orderStatus: req.params.status
+        }
+      }).then(items => {
+        res.json(items);
+      });
+    });
+
   //BEGIN AN ORDER -- NOTE : DEFINE THE INPUT FIELDS - THIS CURRENT METHOD ALLOWS FOR TOO MUCH VARIATION
   app.post("/api/orders", (req, res) => {
     db.order.create(req.body).then(item => {
@@ -72,6 +83,7 @@ app.put("/api/orders/:id", (req, res) => {
         menuItemId: req.body.menuItemId,
         qty: req.body.qty,
         itemSubtotal: itemSubTotal,
+        itemName: req.body.itemName
       })
       .then(results => {
         res.json(results);
@@ -88,6 +100,20 @@ app.put("/api/orders/:id", (req, res) => {
       })
       .then(orderTotal => {
         res.json(orderTotal);
+      });
+  });
+
+  //DELETE SINGLE ITEM FROM ORDER
+  app.delete("/api/orders/:id/:idItem/remove", (req, res) => {
+    db.orderMenuItem
+      .destroy({
+        where: {
+          orderId: req.params.id,
+          id: req.params.idItem
+        }
+      })
+      .then(item => {
+        res.json(item);
       });
   });
 

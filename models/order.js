@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     orderStatus: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 1
     }
   });
 
