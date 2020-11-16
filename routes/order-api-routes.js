@@ -33,16 +33,18 @@ module.exports = function(app) {
 app.put("/api/orders/:id", (req, res) => {
   db.order
     .update({
-        custName: req.body.custName,
-        email: req.body.email,
-        orderStatus: req.body.orderStatus,
-      }, {
+      custName: req.body.custName,
+      email: req.body.email,
+      orderStatus: req.body.orderStatus,
+    }, {
       where: {
         id: req.params.id
       }
-    })
+    }, )
     .then(results => {
+      //let orderDetail  = db.order.findByPk(req.params.id)
       res.json(results);
+      //console.log(results[1].dataValues)
     });
 });
 
