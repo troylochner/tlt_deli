@@ -37,16 +37,30 @@ module.exports = function(app) {
   });
 
   //ADD ITEM TO AN ORDER
+
   app.post("/api/orders/:id/add", (req, res) => {
     db.orderMenuItem
       .create({
         orderId: req.params.id,
-        menuItemId: req.body.menuItemId
+        menuItemId: req.body.menuItemId,
+        qty: req.body.qty
       })
       .then(results => {
         res.json(results);
       });
   });
+  /*
+  app.post("/api/orders/:id/add", (req, res) => {
+    db.orderMenuItem
+      .bulkCreate({
+        orderId: req.params.id,
+        menuItemId: req.body.menuItemId,
+        qty: req.body.qty
+      })
+      .then(results => {
+        res.json(results);
+      });
+  });*/
 
   app.put("/api/orders/:id", (req, res) => {
     db.order

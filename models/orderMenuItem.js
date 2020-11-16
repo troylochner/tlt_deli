@@ -3,6 +3,11 @@
 
 module.exports = function(sequelize, DataTypes) {
   const orderMenuItem = sequelize.define("orderMenuItem", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    } /*,
     menuItemId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -18,6 +23,14 @@ module.exports = function(sequelize, DataTypes) {
         model: "order",
         key: "id"
       }
+    }*/,
+    qty: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    itemSubtotal: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
     }
   });
   return orderMenuItem;
