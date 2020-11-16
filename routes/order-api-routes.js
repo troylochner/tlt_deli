@@ -18,18 +18,18 @@ module.exports = function(app) {
 
   //DO NOT USE THIS ENPOINT RIGHT NOW
   app.get("/api/orders/:id", (req, res) => {
-    db.order
-      .findOne({
+    db.orderMenuItem
+    .findAll({
         where: {
-          id: req.params.id
+          orderId: req.params.id
         },
-        include: [
+        /*include: [
           {
-            model: db.menuItem,
-            as: "menuItems",
-            required: false
+            model: db.order,
+            as: "order",
+            where:{id:req.params.id }
           }
-        ]
+        ]*/
       })
       .then(item => {
         res.json(item);
@@ -40,11 +40,13 @@ module.exports = function(app) {
   //ADD ITEM TO AN ORDER
 
   app.post("/api/orders/:id/add", (req, res) => {
+    var itemSubTotal = ( req.body.qty * req.body.price);
     db.orderMenuItem
       .create({
         orderId: req.params.id,
         menuItemId: req.body.menuItemId,
-        qty: req.body.qty
+        qty: req.body.qty,
+        itemSubtotal: itemSubTotal,
       })
       .then(results => {
         res.json(results);
@@ -53,27 +55,15 @@ module.exports = function(app) {
 
   app.get("/api/orders/:id/total", (req, res) => {
     db.orderMenuItem
-      .findAll({
+      .sum("itemSubtotal",{
         where: {
           orderId: req.params.id
         },
       })
-      .then(item => {
-        res.json(item);
+      .then(orderTotal => {
+        res.json(orderTotal);
       });
   });
-  /*
-  app.post("/api/orders/:id/add", (req, res) => {
-    db.orderMenuItem
-      .bulkCreate({
-        orderId: req.params.id,
-        menuItemId: req.body.menuItemId,
-        qty: req.body.qty
-      })
-      .then(results => {
-        res.json(results);
-      });
-  });*/
 
   app.put("/api/orders/:id", (req, res) => {
     db.order
