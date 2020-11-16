@@ -36,6 +36,7 @@ module.exports = function(app) {
       });
   });
 
+
   //ADD ITEM TO AN ORDER
 
   app.post("/api/orders/:id/add", (req, res) => {
@@ -47,6 +48,18 @@ module.exports = function(app) {
       })
       .then(results => {
         res.json(results);
+      });
+  });
+
+  app.get("/api/orders/:id/total", (req, res) => {
+    db.orderMenuItem
+      .findAll({
+        where: {
+          orderId: req.params.id
+        },
+      })
+      .then(item => {
+        res.json(item);
       });
   });
   /*
