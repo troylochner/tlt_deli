@@ -1,9 +1,8 @@
 //const menuItem = require("./menuItem.js");
 //const order = require("./order.js");
-const db = require("../models");
 module.exports = function(sequelize, DataTypes) {
   const orderMenuItem = sequelize.define("orderMenuItem", {
-    id:{
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -15,20 +14,19 @@ module.exports = function(sequelize, DataTypes) {
     itemSubtotal: {
       type: DataTypes.DECIMAL(10, 2)
     },
-    orderId:{
+    orderId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    menuItemId:{
+    menuItemId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    itemName:{
+    itemName: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
-  
 
   return orderMenuItem;
 };

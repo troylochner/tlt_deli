@@ -9,16 +9,18 @@ module.exports = function(app) {
     });
   });
 
-    // GET ALL ORDERS BY STATUS
-    app.get("/api/orders/status/:status", (req, res) => {
-      db.order.findAll({
-        where:{
+  // GET ALL ORDERS BY STATUS
+  app.get("/api/orders/status/:status", (req, res) => {
+    db.order
+      .findAll({
+        where: {
           orderStatus: req.params.status
         }
-      }).then(items => {
+      })
+      .then(items => {
         res.json(items);
       });
-    });
+  });
 
   //BEGIN AN ORDER -- NOTE : DEFINE THE INPUT FIELDS - THIS CURRENT METHOD ALLOWS FOR TOO MUCH VARIATION
   app.post("/api/orders", (req, res) => {
@@ -27,56 +29,57 @@ module.exports = function(app) {
     });
   });
 
- //GET ORDER HEADLINE INFO
- app.get("/api/orders/:id", (req, res) => {
-  db.order
-  .findOne({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(results => {
-      res.json(results);
-    });
-});
+  //GET ORDER HEADLINE INFO
+  app.get("/api/orders/:id", (req, res) => {
+    db.order
+      .findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(results => {
+        res.json(results);
+      });
+  });
 
-//UPDATE ORDER
-app.put("/api/orders/:id", (req, res) => {
-  db.order
-    .update({
-      custName: req.body.custName,
-      email: req.body.email,
-      orderStatus: req.body.orderStatus,
-    }, {
-      where: {
-        id: req.params.id
-      }
-    }, )
-    .then(results => {
-      //let orderDetail  = db.order.findByPk(req.params.id)
-      res.json(results);
-      //console.log(results[1].dataValues)
-    });
-});
-
+  //UPDATE ORDER
+  app.put("/api/orders/:id", (req, res) => {
+    db.order
+      .update(
+        {
+          custName: req.body.custName,
+          email: req.body.email,
+          orderStatus: req.body.orderStatus
+        },
+        {
+          where: {
+            id: req.params.id
+          }
+        }
+      )
+      .then(results => {
+        //let orderDetail  = db.order.findByPk(req.params.id)
+        res.json(results);
+        //console.log(results[1].dataValues)
+      });
+  });
 
   //LISTS INDIVIDUAL ITEMS IN AN ORDER
   app.get("/api/orders/:id/items", (req, res) => {
     db.orderMenuItem
-    .findAll({
+      .findAll({
         where: {
           orderId: req.params.id
-        },
+        }
       })
       .then(item => {
         res.json(item);
       });
   });
 
-
   //ADD SINGLE ITEMS TO AN ORDER
   app.post("/api/orders/:id/add", (req, res) => {
-    var itemSubTotal = ( req.body.qty * req.body.price);
+    const itemSubTotal = req.body.qty * req.body.price;
     db.orderMenuItem
       .create({
         orderId: req.params.id,
@@ -93,10 +96,10 @@ app.put("/api/orders/:id", (req, res) => {
   //GET THE TOTAL OF THE ORDER
   app.get("/api/orders/:id/total", (req, res) => {
     db.orderMenuItem
-      .sum("itemSubtotal",{
+      .sum("itemSubtotal", {
         where: {
           orderId: req.params.id
-        },
+        }
       })
       .then(orderTotal => {
         res.json(orderTotal);
@@ -117,7 +120,7 @@ app.put("/api/orders/:id", (req, res) => {
       });
   });
 
-//DELETE AN ORDER
+  //DELETE AN ORDER
   app.delete("/api/orders/:id", (req, res) => {
     db.order
       .destroy({
