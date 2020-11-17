@@ -9,17 +9,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     orderTotal: {
-      type: DataTypes.DECIMAL(10, 2)
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    orderStatus: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1
     }
   });
-
-  order.associate = models => {
-    order.belongsToMany(models.menuItem, {
-      through: "orderMenuItem",
-      as: "menuItems",
-      foreignKey: "orderId"
-    });
-  };
 
   return order;
 };

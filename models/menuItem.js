@@ -21,12 +21,5 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  menuItem.associate = models => {
-    menuItem.belongsToMany(models.order, {
-      through: "orderMenuItem",
-      as: "orders",
-      foreignKey: "menuItemId"
-    });
-  };
   return menuItem;
 };
