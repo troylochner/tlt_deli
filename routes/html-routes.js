@@ -30,12 +30,15 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/orderForm.html"));
   });
 
+  /*
   app.get("/tables", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/tables.html"));
   });
+  */
 
   app.get("/orders", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/orders.html"));
+    //res.sendFile(path.join(__dirname, "../public/orders.html"));
+    res.render("orders");
   });
 
   // Here we've add our isAuthenticated middleware to this route.
