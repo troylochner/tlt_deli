@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-3" style="text-align: center; padding: 20px;">
+            <h2>All Orders</h2>
+            <p>Start a new order <a href="/neworder">here</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card">
+                <h5 class="card-header">Open Orders</h5>
+                <div class="card-body">
+                    <table class="table table-bordered" id="orders">
+                        <thead>
+                            <tr>
+                                {{#each items}}
+                                {{#if orderStatus=1}}
+                                <th scope="col" id="orderName">{{custName}}</th>
+                                <th scope="col" id="orderEmail">{{email}}</th>
+                                <th scope="col" id="orderEmail">{{orderTotal}}</th>
+                                <th scope="col" id="ordeStatus">{{orderStatus}}</th>
+                                {{/if}}
+                                {{/each}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card">
+                <h5 class="card-header">Closed Orders</h5>
+                <div class="card-body">
+                    <table class="table table-bordered" id="orders2">
+                        <thead>
+                            <tr>
+                                {{#each items}}
+                                {{#if orderStatus=2}}
+                                <th scope="col" id="orderName2">{{custName}}</th>
+                                <th scope="col" id="orderEmail2">{{email}}</th>
+                                <th scope="col" id="orderEmail">{{orderTotal}}</th>
+                                <th scope="col" id="ordeStatus2">{{orderStatus}}</th>
+                                {{/else}}
+                                {{/each}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
