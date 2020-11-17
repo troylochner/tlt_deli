@@ -36,6 +36,7 @@ module.exports = function(app) {
   app.post("/api/orders", (req, res) => {
     db.order.create(req.body).then(item => {
       res.json(item);
+      //res.redirect("/orders");
     });
   });
 

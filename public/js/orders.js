@@ -19,8 +19,8 @@ $(() => {
       data: order
     }).then(() => {
       console.log(order);
-
-      // Reload the page to get the updated list
+      window.location.replace("/orders");
+      // Reload the pa\ge to get the updated list
       //location.reload();
     });
   });
