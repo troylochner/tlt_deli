@@ -104,6 +104,17 @@ module.exports = function(app) {
       });
   });
 
+  //ADD MULTIPLE ITEMS TO AN ORDER
+  app.post("/api/orders/addbulk", (req, res) => {
+    //const itemSubTotal = req.body.qty * req.body.price;
+    const itemArray = req.body.items;
+    console.log(itemArray);
+    db.orderMenuItem.bulkCreate(itemArray).then(results => {
+      res.json(results);
+      console.log(results);
+    });
+  });
+
   //GET THE TOTAL OF THE ORDER
   app.get("/api/orders/:id/total", (req, res) => {
     db.orderMenuItem
