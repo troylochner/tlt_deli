@@ -26,7 +26,8 @@ module.exports = function(app) {
   });
 
   app.get("/neworder", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/orderForm.html"));
+    //res.sendFile(path.join(__dirname, "../public/orderForm.html"));
+    res.render("orderForm");
   });
 
   /*

@@ -139,8 +139,10 @@ module.exports = function(app) {
           id: req.params.id
         }
       })
+      // eslint-disable-next-line no-unused-vars
       .then(item => {
-        res.json(item);
+        res.redirect("/orders");
+        //res.json(item);
       });
   });
 };
