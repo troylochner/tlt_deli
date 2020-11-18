@@ -1,0 +1,34 @@
+<h2>Create a Burger</h2>
+
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="bur" name="name">
+  </div>
+  <button type="submit">Add Burger</button>
+</form>
+
+<hr>
+
+<h1>Created - but not yet tried ...</h1>
+
+<ul>
+  {{#each burgers}}
+  {{#unless devoured}}
+  {{> burgers/burgers-block}}
+  {{/unless}}
+  {{/each}}
+</ul>
+
+<hr>
+<h2>These have been tried...</h2>
+<ul>
+  {{#each burgers}}
+  {{#if devoured}}
+  {{> burgers/burgers-block}}
+  {{/if}}
+  {{/each}}
+</ul>
+
+<hr>

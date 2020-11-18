@@ -9,6 +9,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/orders", (req, res) => {
+    db.order.findAll({}).then(data => {
+      //console.log(data);
+      res.render("orders", {
+        orders: data,
+        status: "Open"
+      });
+    });
+  });
+
   // GET ALL ORDERS BY STATUS
   app.get("/api/orders/status/:status", (req, res) => {
     db.order
@@ -26,6 +36,7 @@ module.exports = function(app) {
   app.post("/api/orders", (req, res) => {
     db.order.create(req.body).then(item => {
       res.json(item);
+      //res.redirect("/orders");
     });
   });
 

@@ -4,7 +4,8 @@ const db = require("../models");
 module.exports = function(app) {
   app.get("/api/menuitems", (req, res) => {
     db.menuItem.findAll({}).then(items => {
-      res.json(items);
+      //res.json(items);
+      res.render("menu", { items }); //pass as an object
     });
   });
 
