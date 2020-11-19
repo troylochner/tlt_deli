@@ -21,8 +21,6 @@ $(document).ready(() => {
       }).then(() => {
         console.log(order);
         newOrderId = this.id;
-        // Reload the page to get the updated list
-        // location.reload();
       });
     });
   }).then(() => {
@@ -46,8 +44,7 @@ $(document).ready(() => {
       data: orderItems
     }).then(() => {
       console.log(orderItems);
-      //Redirect/refresh back to menu page?
-      //location.reload();
+      window.location.replace("orders.handlebars");
     });
   });
 });

@@ -1,9 +1,11 @@
-<tr "data-id"={{this.dataValues.id}}>
+<tr "data-id"={{this.dataValues.id}}> <!--ID OF THE ORDER-->
 	<td>{{this.dataValues.id}} </td>
 	<td>{{this.dataValues.orderStatus}} </td>
 	<td>{{this.dataValues.custName}} </td>
-	<td>{{this.dataValues.email}} </td>  
-	<td><button type="submit" class="btn btn-primary">Edit</button>      </td>   
-	               
+	<td>{{this.dataValues.email}} </td> 
+	<td>{{this.dataValues.orderTotal}} </td>   
+	<td><button type="submit" class="btn btn-secondary">Details</button></td> <!--GO TO ORDER DETAIL PAGE - -->
+	<td><button type="submit" class="btn btn-primary">Complete</button></td> <!--SET STATUS OF THE ORDER TO '2'-->
+	<td><button type="submit" class="btn btn-danger">Delete</button></td>     <!--DLETE THE ORDER-->          
 </tr>
 

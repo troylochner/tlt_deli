@@ -3,3 +3,4 @@ node_modules/
 .DS_Store
 hold/
 public/js/messenger.js
+public/js/slack.js
