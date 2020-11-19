@@ -10,7 +10,7 @@ module.exports = function(app) {
   });
 
   app.get("/orders", (req, res) => {
-    db.order.findAll({}).then(data => {
+    db.order.findAll({ order: [["createdAt", "DESC"]] }).then(data => {
       //console.log(data);
       res.render("orders", {
         orders: data,
