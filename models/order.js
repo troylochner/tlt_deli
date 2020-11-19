@@ -13,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     },
     orderStatus: {
-      type: DataTypes.INTEGER,
-      defaultValue: 1
+      type: DataTypes.STRING,
+      defaultValue: "New"
     }
   });
 
