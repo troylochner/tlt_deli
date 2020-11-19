@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    mobile: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     orderTotal: {
       type: DataTypes.DECIMAL(10, 2),
       defaultValue: 0
