@@ -9,8 +9,8 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/orders");
     }
-    //res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.redirect("/neworder");
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    //res.redirect("/neworder");
   });
 
   app.get("/login", (req, res) => {
