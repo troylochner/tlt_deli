@@ -1,35 +1,22 @@
 module.exports = function(sequelize, DataTypes) {
-  const Order = sequelize.define("Order", {
-    item: {
+  const order = sequelize.define("order", {
+    custName: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      allowNull: true
     },
-    description: {
+    email: {
       type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
+      allowNull: true
     },
-    price: {
-      type: DataTypes.DECIMAL(10, 2)
+    orderTotal: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    orderStatus: {
+      type: DataTypes.STRING,
+      defaultValue: "New"
     }
   });
 
-<<<<<<< Updated upstream
-  order.associate = models => {
-    order.belongsToMany(models.menuItem, {
-      through: "orderMenuItem",
-      as: "menuItems",
-      foreignKey: "orderId"
-=======
-  Order.associate = function(models) {
-    Order.hasMany(models.tableTop, {
-      foreignKey: "idOrder"
->>>>>>> Stashed changes
-    });
-  };
-
-  return Order;
+  return order;
 };

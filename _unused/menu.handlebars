@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 col-md-offset-3">
+                <div class="card">
+                    <h5 class="card-header">MENU</h5>
+                    <div class="card-body">
+                        <table class="table table-bordered" id="menuTable">
+                            <thead>
+                              <tr>
+                                <th scope="col" id="itemnum">#</th>
+                                <th scope="col" id="colItem">Item</th>
+                                <th scope="col" id="colDesc">Description</th>
+                                <th scope="col" id="colDesc">Category</th>
+                                <th scope="col" id="colPrice">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                {{#each items}}
+                                    <td>{{id}}</td>
+                                    <td>{{item}}</td>
+                                    <td>{{description}}</td> 
+                                    <td>{{category}}</td>
+                                    <td>{{price}}</td>
+                                {{/each}}
+                                </tr>
+                            </table>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
