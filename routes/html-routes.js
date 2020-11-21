@@ -4,14 +4,22 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
+  /*
   app.get("/", (req, res) => {
     // IF THE USER IS AN AUTHENTICATED USER -- SEND THEM TO THE ORDERS OVERVIEW PAGE. THIS MEANS THEY WORK HERE>>>
     if (req.user) {
       res.redirect("/orders");
     }
-    //res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
     //IF THE USER DOES NOT WORK HERE --> SEND THEM TO THE PLACE ORDER PAGE...
-    res.redirect("/placeorder");
+    //res.redirect("/placeorder");
+  });
+*/
+  app.get("/", (req, res) => {
+    // IF THE USER IS AN AUTHENTICATED USER -- SEND THEM TO THE ORDERS OVERVIEW PAGE. THIS MEANS THEY WORK HERE>>>
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+    //IF THE USER DOES NOT WORK HERE --> SEND THEM TO THE PLACE ORDER PAGE...
+    //res.redirect("/placeorder");
   });
 
   app.get("/signup", (req, res) => {
