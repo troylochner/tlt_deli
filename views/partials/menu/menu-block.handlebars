@@ -36,14 +36,12 @@
 
                                 {{#each menu}}
                                 <tr"data-id"={{this.dataValues.id}}> <!--ID OF THE ORDER-->
-
-                                    <td id="id{{@index}}">{{this.dataValues.category}} </td>
-                                    <td id="item{{@index}}">{{this.dataValues.item}} </td>
+                                    <td>{{this.dataValues.category}} </td>
+                                    <td>{{this.dataValues.item}} </td>
                                     <td>{{this.dataValues.description}} </td>
-                                    <td id="price{{@index}}">{{this.dataValues.price}} </td>
-                                    <td id="notes{{@index}}"><input type="text" placeholder="Notes"></input></td>
-                                    <td><select class="form-control" id="FormControl{{@index}}">
-
+                                    <td>{{this.dataValues.price}} </td>
+                                    <td><input type="text" placeholder="Notes"></input></td>
+                                    <td><select class="form-control" id="exampleFormControlSelect1">
       <option>0</option>
       <option>1</option>
       <option>2</option>
@@ -60,9 +58,7 @@
                         </thead>
                         <tbody>
                         </table>
-
-                        <button id="placeOrder" type="submit" class="btn btn-primary">Place Order</button>
-
+                        <button type="submit" class="btn btn-primary">Place Order</button>
                         <button type="submit" class="btn btn-secondary">Cancel Order</button>
                     </div>
                 </div>

@@ -19,11 +19,7 @@ $(() => {
       data: order
     }).then(() => {
       console.log(order);
-
-      window.location.replace("/placeorder");
-=======
-      //window.location.replace("/orders");
-
+      window.location.replace("/orders");
       // Reload the pa\ge to get the updated list
       //location.reload();
     });
