@@ -5,12 +5,21 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
+    // IF THE USER IS AN AUTHENTICATED USER -- SEND THEM TO THE ORDERS OVERVIEW PAGE. THIS MEANS THEY WORK HERE>>>
     if (req.user) {
       res.redirect("/orders");
     }
     //res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.redirect("/neworder");
+    //IF THE USER DOES NOT WORK HERE --> SEND THEM TO THE PLACE ORDER PAGE...
+    res.redirect("/placeorder");
+  });
+
+  app.get("/signup", (req, res) => {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/orders");
+    }
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", (req, res) => {

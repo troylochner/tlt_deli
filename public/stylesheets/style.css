@@ -2,3 +2,121 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+*
+{
+  box-sizing: border-box!important;
+  }
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: serif;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#nav {
+  background-color: #000A12;
+  padding: 15px;
+}
+#logo {
+  font-size: 40px;
+}
+#logo:hover {
+  color: white;
+}
+.navbar-brand {
+  color: white;
+}
+#headOrder {
+  background-color: #263238;
+  color: white;
+}
+#orderCard {
+  padding-top: 20px;
+}
+#orderCardList{
+  color: #000A12;
+}
+.nav-link {
+  color: white;
+  font-size: 20px;
+}
+.nav-link:hover{
+  color: #708291a9;
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+#sidebar {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: #7386D5;
+  color: #fff;
+  transition: all 0.3s;
+}
+#orderSubmit {
+  margin: 20px;
+}
+#orderList{
+  background-color: #263238;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}
+#orderBody{
+  box-sizing: content-box;
+}
+ #page-container2 {
+  position: relative;
+  min-height: 100vh;
+}
+#content-wrap2{
+  padding-bottom: 2.5rem;   
+}
+/*
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 100hv;
+  background-color: #F5F5F5;
+  color: rgb(124, 124, 124);
+  padding: 2%;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+*/
+#footer {
+  background-color: #F5F5F5;
+  color: rgb(124, 124, 124);;
+  font-size:.8em;
+  margin-top:25px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  text-align: center;
+  }
+  @media only screen and (max-width: 767px){
+    footer {
+      background-color: #F5F5F5;
+      color: rgb(124, 124, 124);;
+      font-size:.8em;
+      margin-top:25px;
+      padding-top: 15px;
+      padding-bottom: 10px;
+      position:static;
+      left:0;
+      bottom:0;
+      width:100%;
+      text-align: center;
+    }
+}
