@@ -1,6 +1,7 @@
+
 {
   "development": {
-    "username": "testUser",
+    "username": "test_user",
     "password": "testPW",
     "database": "tlt_deli",
     "host": "127.0.0.1",
