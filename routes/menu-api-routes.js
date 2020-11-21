@@ -5,6 +5,13 @@ module.exports = function(app) {
   app.get("/api/menuitems", (req, res) => {
     db.menuItem.findAll({}).then(items => {
       res.json(items);
+      res.render("partials/menu/menu-block", { menu: items }); //pass as an object
+    });
+  });
+
+  app.get("/placeorder", (req, res) => {
+    db.menuItem.findAll({}).then(items => {
+      res.render("partials/menu/menu-block", { menu: items }); //pass as an object
     });
   });
 
