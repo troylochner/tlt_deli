@@ -33,6 +33,12 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/menuitems/add", (req, res) => {
+    db.menuItem.create(req.body).then(item => {
+      res.json(item);
+    });
+  });
+
   app.put("/api/menuitems/:id", (req, res) => {
     db.menuItem
       .update(req.body, {

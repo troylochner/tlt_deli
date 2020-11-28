@@ -36,6 +36,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+  app.get("/menuForm", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/menuForm.html"));
+  });
+
   /*
 
   //ADDED PATH TO GET MENU ITEMS + ORDERS + TABLES
