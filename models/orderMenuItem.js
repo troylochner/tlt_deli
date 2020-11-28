@@ -25,10 +25,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }*/
   });
-  /*
+
   orderMenuItem.associate = function(models) {
     orderMenuItem.belongsTo(models.order);
-  };*/
+  };
 
   return orderMenuItem;
 };

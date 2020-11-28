@@ -47,7 +47,7 @@ module.exports = function(app) {
         where: {
           id: req.params.id
         },
-        include: [db.menuItem]
+        include: [{ all: true, nested: true }]
       })
       .then(results => {
         res.json(results);

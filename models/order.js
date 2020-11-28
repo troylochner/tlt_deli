@@ -22,8 +22,8 @@ module.exports = function(sequelize, DataTypes) {
     order.belongsToMany(models.menuItem, {
       through: "orderMenuItem"
     });
+    order.hasMany(models.orderMenuItem);
   };
-
 
   return order;
 };
