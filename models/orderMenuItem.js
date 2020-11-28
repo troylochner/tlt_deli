@@ -1,5 +1,3 @@
-//const menuItem = require("./menuItem.js");
-//const order = require("./order.js");
 module.exports = function(sequelize, DataTypes) {
   const orderMenuItem = sequelize.define("orderMenuItem", {
     id: {
