@@ -1,16 +1,14 @@
+/* eslint-disable no-unused-vars */
+//const express = require("express");
 $(document).ready(() => {
   // Gets an optional query string from our url (i.e. ?post_id=23)
   const url = window.location.search;
   let menuItemId;
   // Sets a flag for whether or not we're updating a post to be false initially
   let updating = false;
+  let menuitems;
 
-  // If we have this section in our url, we pull out the post id from the url
-  // In localhost:8080/cms?post_id=1, postId is 1
-  if (url.indexOf("?menuitem_id=") !== -1) {
-    menuItemId = url.split("=")[1];
-    getPostData(menuItemId);
-  }
+  getMenu();
 
   // Getting jQuery references to the post body, title, form, and category select
   const itemInput = $("#itemName");
@@ -50,6 +48,17 @@ $(document).ready(() => {
   function addMenuItem(Post) {
     $.post("/api/posts/", Post, () => {
       window.location.href = "/blog";
+    });
+  }
+
+  //GET THE MENU FROM OUR API
+  function getMenu() {
+    $.get("/api/menuitems/", res => {
+      console.log(res);
+      menuItems = res;
+      res.render("partials/menu/menu-block", { menu: menuItems }); //pass as an object
+      //res.render("index", res);
+      //location.reload();
     });
   }
 

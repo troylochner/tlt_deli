@@ -1,29 +1,30 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-md-offset-3" style="text-align: center; padding: 20px;">
-            <h2>All Orders</h2>
-            <p>Start a new order <a href="/neworder">here</a></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 col-md-offset-3">
-            <div class="card">
-                <h5 class="card-header">Orders</h5>
-                <div class="card-body">
-                    <table class="table table-bordered" id="orders">
-                        <thead>
-                          <td>Order #</td><td>Status</td><td>Name</td><td>Email</td><td>Action</td>
-                            <tr>
-                                {{#each orders}}  
-                                {{> orders/orders-block}}                      
-                                {{/each}}
-                            </tr>
-                        </thead>
-                        <tbody>
-                    </table>
+ <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-3">
+                <div class="card">
+                    <h5 class="card-header">MENU</h5>
+                    <div class="card-body">
+                        <table class="table table-bordered" id="menuTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col" id="itemnum">#</th>
+                                    <th scope="col" id="colItem">Category</th>
+                                    <th scope="col" id="colItem">Item</th>
+                                    <th scope="col" id="colDesc">Description</th>
+                                    <th scope="col" id="colPrice">Price</th>
+                                    <th scope="col" id="colEdit">Edit</th>
+                                    <th scope="col" id="colDelete">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-      
-    </div>
-</div>
+    </body>
+    <script type="text/javascript" src="./js/menu-manager.js"></script>

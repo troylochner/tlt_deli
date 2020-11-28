@@ -40,6 +40,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/menuForm.html"));
   });
 
+  app.get("/editmenu", (req, res) => {
+    res.render("menu-editor");
+    //res.sendFile(path.join(__dirname, "../public/menuForm.html"));
+  });
   /*
 
   //ADDED PATH TO GET MENU ITEMS + ORDERS + TABLES

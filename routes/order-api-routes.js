@@ -46,7 +46,8 @@ module.exports = function(app) {
       .findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: [db.menuItem]
       })
       .then(results => {
         res.json(results);

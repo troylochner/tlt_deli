@@ -18,5 +18,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  order.associate = function(models) {
+    order.belongsToMany(models.menuItem, {
+      through: "orderMenuItem"
+    });
+  };
+
+
   return order;
 };

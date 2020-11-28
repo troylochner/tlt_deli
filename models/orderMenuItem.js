@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     itemSubtotal: {
       type: DataTypes.DECIMAL(10, 2)
-    },
+    } /*,
     orderId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -23,8 +23,12 @@ module.exports = function(sequelize, DataTypes) {
     itemName: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    }*/
   });
+  /*
+  orderMenuItem.associate = function(models) {
+    orderMenuItem.belongsTo(models.order);
+  };*/
 
   return orderMenuItem;
 };
