@@ -1,61 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>TLT Deli</title>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
-    type='text/css'>
-  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
-  <script src="/js/order-create.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <title>TLT Deli</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous">
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type='text/css'>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+    
+    
 
-<body>
+    <body>
 
-  <body>
-    <div id="page-container2">
-      <div id="content-wrap2">
-        <nav class="navbar navbar-expand-lg " id="nav">
-          <div class="container">
-            <a class="navbar-brand" href="/" id="logo"><i class="fas fa-hamburger"></i>TLT DELI</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-              aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="/placeorder">Place an Order</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/placeorder">See Menu</a>
-                </li>
-              </ul>
+      <div class="modal fade" id="newOrderModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Place New Order</h5>
+              <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" id="custName">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Email:</label>
+                  <input type="text" class="form-control" id="custEmail"></input>
+              </div>
+            </form>
           </div>
-        </nav>
-
-        <body>
-          <img src="../assets/bagel_bg.jpg" class="img-fluid" alt="Responsive image">
-        </body>
-
-
-        </body>
-          <footer id="footer">© 2020 Copyright: Leo Ronan, Troy Lochner, Thalia
-            Romany
-            <p><a href="/employees">Employee Login</a></p>
-          </footer>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+              data-dismiss="modal">Close</button>
+            <button id="beginOrder" type="button" class="btn btn-primary">Begin
+              Order</button>
+          </div>
+        </div>
       </div>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-      </script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-      </script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-      </script>
-  </body>
+    </div>
 
-</html>
+    <body>
+      <div id="page-container2">
+        <div id="content-wrap2">
+          <nav class="navbar navbar-expand-lg" id="nav">
+            <div class="container">
+              <a class="navbar-brand" href="/" id="logo"><i class="fas
+                  fa-hamburger"></i>TLT DELI</a>
+              <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item">
+
+                    <a class="nav-link" href="#" data-toggle="modal"
+                      data-target="#newOrderModal">Place An Order</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/placeorder">See Menu</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <body>
+            <img src="../assets/bagel_bg.jpg" class="img-fluid"
+              alt="Responsive image">
+          </body>
+
+
+        </body>
+        <footer id="footer">© 2020 Copyright: Leo Ronan, Troy Lochner, Thalia
+          Romany
+          <p><a href="/employees">Employee Login</a></p>
+        </footer>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous">
+      </script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous">
+      </script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous">
+      </script>
+      <script>
+      $("#beginOrder").on("click", event => {
+        var orderID ; 
+        console.log("Click")
+      //event.preventDefault();
+      const order = {
+      custName: $("#custName")
+        .val()
+        .trim(),
+      email: $("#custEmail")
+        .val()
+        .trim()
+    };
+    // Send the POST request.
+    $.ajax("/api/orders", {
+      type: "POST",
+      data: order,
+      success: function(res) {
+            //const resLength = JSON.stringify(res.length);
+            orderId = parseInt(res.id);
+            console.log(res.id);
+            window.location.replace("/api/orders/" + orderId ); 
+          }
+    });
+    
+  });
+
+      </script>
+    </body>
+
+  </html>
