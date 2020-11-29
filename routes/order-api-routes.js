@@ -1,10 +1,11 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
+const orderMenuItem = require("../models/orderMenuItem");
 
 module.exports = function(app) {
   // GET ALL ORDERS IN THE SYSTEM
   app.get("/api/orders", (req, res) => {
-    db.order.findAll({}).then(items => {
+    db.order.findAll({ include: [{ all: true, nested: true }] }).then(items => {
       res.json(items);
     });
   });
@@ -40,8 +41,26 @@ module.exports = function(app) {
     });
   });
 
-  //GET ORDER HEADLINE INFO
+  //GET ORDER DEATAILS API
   app.get("/api/orders/:id", (req, res) => {
+    db.order
+      .findOne({
+        where: {
+          id: req.params.id
+        },
+        //include: [{ all: true, nested: false }]
+        include: [
+          //{ model: db.orderMenuItem, nested: true },
+          { model: db.menuItem, nested : true, attributes:['price', 'item']  }
+        ]
+      })
+      .then(results => {
+        res.json(results);
+      });
+  });
+
+  //GET ORDER DEATAILS API
+  app.get("/orders/:id", (req, res) => {
     db.order
       .findOne({
         where: {

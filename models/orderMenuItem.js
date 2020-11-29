@@ -8,10 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     qty: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
+    } /*,
     itemSubtotal: {
       type: DataTypes.DECIMAL(10, 2)
-    } /*,
+    },
     orderId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -28,6 +28,7 @@ module.exports = function(sequelize, DataTypes) {
 
   orderMenuItem.associate = function(models) {
     orderMenuItem.belongsTo(models.order);
+    orderMenuItem.belongsTo(models.menuItem);
   };
 
   return orderMenuItem;

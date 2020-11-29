@@ -126,7 +126,8 @@
             //const resLength = JSON.stringify(res.length);
             orderId = parseInt(res.id);
             console.log(res.id);
-            window.location.replace("/api/orders/" + orderId ); 
+            window.location.replace("/orders/" + orderId ); 
+            //res.render("partials/menu/menu-block", { menu: res }); //pass as an object
           }
     });
     
