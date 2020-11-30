@@ -1,6 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
-const orderMenuItem = require("../models/orderMenuItem");
+//const orderMenuItem = require("../models/orderMenuItem");
 
 module.exports = function(app) {
   // GET ALL ORDERS IN THE SYSTEM
@@ -34,9 +34,10 @@ module.exports = function(app) {
   });
 
   //BEGIN AN ORDER -- NOTE : DEFINE THE INPUT FIELDS - THIS CURRENT METHOD ALLOWS FOR TOO MUCH VARIATION
+  // eslint-disable-next-line no-unused-vars
   app.post("/api/orders", (req, res) => {
     db.order.create(req.body).then(item => {
-      res.json(item);
+      //res.json(item);
       //res.redirect("/orders");
     });
   });
@@ -51,7 +52,11 @@ module.exports = function(app) {
         //include: [{ all: true, nested: false }]
         include: [
           //{ model: db.orderMenuItem, nested: true },
-          { model: db.menuItem, nested : true, attributes:['price', 'item']  }
+          {
+            model: db.menuItem,
+            nested: true,
+            attributes: ["price", "item", "description"]
+          }
         ]
       })
       .then(results => {
@@ -69,7 +74,10 @@ module.exports = function(app) {
         include: [{ all: true, nested: true }]
       })
       .then(results => {
-        res.json(results);
+        //res.json(results);
+        res.render("place-order", {
+          orderDetail : results
+        });
       });
   });
 
