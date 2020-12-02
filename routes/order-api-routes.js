@@ -221,7 +221,7 @@ module.exports = function(app) {
     }
 
     for (n = 0; n < itemArray.length; n++) {
-      OrderTotal += itemArray[n].lineTotal;
+      OrderTotal += itemArray[n].itemTotal;
     }
 
     //const items = { orderItems: itemArray };
