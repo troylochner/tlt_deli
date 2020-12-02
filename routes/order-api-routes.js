@@ -6,7 +6,9 @@ module.exports = function(app) {
   // GET ALL ORDERS IN THE SYSTEM
   app.get("/api/orders", (req, res) => {
     db.order.findAll({ include: [{ all: true, nested: true }] }).then(items => {
-      res.json(items);
+      //res.json(items);
+      const x = processAll(items);
+      res.json(x);
     });
   });
 
@@ -37,12 +39,12 @@ module.exports = function(app) {
   // eslint-disable-next-line no-unused-vars
   app.post("/api/orders", (req, res) => {
     db.order.create(req.body).then(item => {
-      //res.json(item);
+      res.json(item);
       //res.redirect("/orders");
     });
   });
 
-  //GET ORDER DEATAILS API
+  //GET ORDER DETAILS API
   app.get("/api/orders/:id", (req, res) => {
     db.order
       .findOne({
@@ -52,6 +54,7 @@ module.exports = function(app) {
         //include: [{ all: true, nested: false }]
         include: [
           //{ model: db.orderMenuItem, nested: true },
+
           {
             model: db.menuItem,
             nested: true,
@@ -59,12 +62,16 @@ module.exports = function(app) {
           }
         ]
       })
-      .then(results => {
-        res.json(results);
+      .then(orderInfo => {
+        const x = processOrder(orderInfo);
+        res.json(x);
+        //HOW TO GET THINGS FROM THE DATA :
+        // menuItems[0].orderMenuItem.qty -- HOW MANY OF AN ITEM
+        // menuItems[0].price -- GET THE PRICE
       });
   });
 
-  //GET ORDER DEATAILS API
+  //GET ORDER DETAILS API
   app.get("/orders/:id", (req, res) => {
     db.order
       .findOne({
@@ -76,7 +83,7 @@ module.exports = function(app) {
       .then(results => {
         //res.json(results);
         res.render("place-order", {
-          orderDetail : results
+          orderDetail: results
         });
       });
   });
@@ -184,4 +191,50 @@ module.exports = function(app) {
         //res.json(item);
       });
   });
+
+  function processAll(items) {
+    const allOrders = [];
+    let orderDetail;
+    console.log(items.length);
+    for (x = 0; x < items.length; x++) {
+      orderDetail = processOrder(items[x]);
+      allOrders.push(orderDetail);
+    }
+
+    return allOrders;
+  }
+
+  function processOrder(orderInfo) {
+    const orderArray = [];
+    const itemArray = [];
+    let OrderTotal = 0;
+    const itemCount = orderInfo.menuItems.length;
+    for (i = 0; i < itemCount; i++) {
+      const itemObj = {
+        item: orderInfo.menuItems[i].item,
+        qty: orderInfo.menuItems[i].orderMenuItem.qty,
+        price: orderInfo.menuItems[i].price,
+        lineTotal:
+          orderInfo.menuItems[i].orderMenuItem.qty *
+          orderInfo.menuItems[i].price
+      };
+      itemArray.push(itemObj);
+    }
+
+    for (n = 0; n < itemArray.length; n++) {
+      OrderTotal += itemArray[n].lineTotal;
+    }
+
+    const orderObj = {
+      id: orderInfo.id,
+      custName: orderInfo.custName,
+      email: orderInfo.email,
+      orderStatus: orderInfo.orderStatus,
+      orderTime: orderInfo.createdAt,
+      totalPrice: OrderTotal
+    };
+    orderArray.push(itemArray);
+    orderArray.push(orderObj);
+    return orderArray;
+  }
 };
