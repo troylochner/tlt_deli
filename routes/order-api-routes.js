@@ -194,10 +194,9 @@ module.exports = function(app) {
 
   function processAll(items) {
     const allOrders = [];
-    let orderDetail;
     console.log(items.length);
     for (x = 0; x < items.length; x++) {
-      orderDetail = processOrder(items[x]);
+      const orderDetail = processOrder(items[x]);
       allOrders.push(orderDetail);
     }
 
@@ -205,7 +204,7 @@ module.exports = function(app) {
   }
 
   function processOrder(orderInfo) {
-    const orderArray = [];
+    //const orderArray = [];
     const itemArray = [];
     let OrderTotal = 0;
     const itemCount = orderInfo.menuItems.length;
@@ -214,7 +213,7 @@ module.exports = function(app) {
         item: orderInfo.menuItems[i].item,
         qty: orderInfo.menuItems[i].orderMenuItem.qty,
         price: orderInfo.menuItems[i].price,
-        lineTotal:
+        itemTotal:
           orderInfo.menuItems[i].orderMenuItem.qty *
           orderInfo.menuItems[i].price
       };
@@ -225,16 +224,20 @@ module.exports = function(app) {
       OrderTotal += itemArray[n].lineTotal;
     }
 
+    //const items = { orderItems: itemArray };
     const orderObj = {
-      id: orderInfo.id,
-      custName: orderInfo.custName,
-      email: orderInfo.email,
-      orderStatus: orderInfo.orderStatus,
-      orderTime: orderInfo.createdAt,
-      totalPrice: OrderTotal
+      orderInfo: {
+        id: orderInfo.id,
+        custName: orderInfo.custName,
+        email: orderInfo.email,
+        orderStatus: orderInfo.orderStatus,
+        orderTime: orderInfo.createdAt,
+        totalPrice: OrderTotal,
+        items: itemArray
+      }
     };
-    orderArray.push(itemArray);
-    orderArray.push(orderObj);
-    return orderArray;
+    //orderArray.push(items);
+    //orderArray.push(orderObj);
+    return orderObj;
   }
 };
