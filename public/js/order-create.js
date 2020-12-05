@@ -1,6 +1,6 @@
 $(document).ready(() => {
   let newOrderId;
-  $(":button").on("click", event => {
+  $("#placeOrder").on("click", event => {
     event.preventDefault();
     const order = {
       custName: $("#custName")
@@ -42,7 +42,7 @@ $(document).ready(() => {
                   menuItemId: i,
                   qty: $("#FormControl" + i).val(),
                   itemName: $("#item" + i).html(),
-                  price: $("#price" + i)
+                  itemSubtotal: $("#price" + i)
                     .html()
                     .trim()
                 };
@@ -61,5 +61,9 @@ $(document).ready(() => {
           });
         });
       });
+  });
+  $("#cancelOrder").on("click", event => {
+    event.preventDefault();
+    window.location.replace("/orders");
   });
 });
