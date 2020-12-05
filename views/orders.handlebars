@@ -16,7 +16,7 @@
                           <td>Order #</td><td>Status</td><td>Name</td><td>Email</td><td>Total</td><td colspan=3>Action</td>
                             <tr>
                                 {{#each orders}}  
-                                {{> orders/orders-block}}                      
+                                {{> orders/orders-block}}                     
                                 {{/each}}
                             </tr>
                         </thead>
@@ -28,3 +28,9 @@
       
     </div>
 </div>
+<div class="modal">
+    <div id="modal-content">
+        <span id="modal-exit"></span>
+        <p id="order-items">Hello there</p>
+    </div>
+</div> 
