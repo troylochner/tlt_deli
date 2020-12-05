@@ -4,22 +4,39 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
+  //UPDATE ROOT --- SEND TO DELI HOME BEFORE ANYTHING ELSE
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+  });
+
+  //EMPLOYEES MUST LOGIN TO SEE ORDER
+  app.get("/employees", (req, res) => {
+    // IF THE USER IS AN AUTHENTICATED USER -- SEND THEM TO THE ORDERS OVERVIEW PAGE. THIS MEANS THEY WORK HERE>>>
     if (req.user) {
       res.redirect("/orders");
     }
-    //res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.redirect("/neworder");
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+    //IF THE USER DOES NOT WORK HERE --> SEND THEM TO THE PLACE ORDER PAGE...
+    //res.redirect("/placeorder");
+  });
+
+  app.get("/signup", (req, res) => {
+    //IF THE USER IS ALREADY LOGGED IN --> JUST GO TO ORDERS
+    if (req.user) {
+      res.redirect("/orders");
+    }
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", (req, res) => {
-    // If the user already has an account send them to the members page
+    //IF THE USER IS ALREADY LOGGED IN --> JUST GO TO ORDERS
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/orders");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
+
+  /*
 
   //ADDED PATH TO GET MENU ITEMS + ORDERS + TABLES
   app.get("/menu", (req, res) => {
@@ -29,23 +46,7 @@ module.exports = function(app) {
   app.get("/neworder", (req, res) => {
     //res.sendFile(path.join(__dirname, "../public/orderForm.html"));
     res.render("orderForm");
-  });
-
-  /*
-  app.get("/tables", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/tables.html"));
-  });
- 
-
-  /*
-  app.get("/orders", (req, res) => {
-    db.order.findAll({}).then(orders => {
-      //res.json(items);
-      res.render("orders", { orders }); //pass as an object
-    });
-
-    //res.sendFile(path.join(__dirname, "../public/orders.html"));
-  }); */
+  });*/
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page

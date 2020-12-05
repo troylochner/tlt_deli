@@ -1,6 +1,7 @@
 node_modules/
+_unused/
+hold/
 .env
 .DS_Store
-hold/
 public/js/messenger.js
 public/js/slack.js

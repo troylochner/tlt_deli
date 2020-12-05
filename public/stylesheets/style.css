@@ -2,44 +2,120 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-
- /* The Modal (background) */
- .modal {
-  display: none; /* Hidden by default */
-  position: relative; /* Stay in place */
-  z-index: 2000; /* Sit on top */
+{
+  box-sizing: border-box!important;
+  }
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: serif;
+    color: Black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#nav {
+  background-color: #000A12;
+  padding: 15px;
+}
+#logo {
+  font-size: 40px;
+}
+#logo:hover {
+  color: white;
+}
+.navbar-brand {
+  color: white;
+}
+#headOrder {
+  background-color: #263238;
+  color: white;
+}
+#orderCard {
+  padding-top: 20px;
+}
+#orderCardList{
+  color: #000A12;
+}
+.nav-link {
+  color: white;
+  font-size: 20px;
+}
+.nav-link:hover{
+  color: #708291a9;
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+#sidebar {
+  width: 250px;
+  position: fixed;
   left: 0;
-  top: 100px;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  height: 100vh;
+  z-index: 999;
+  background: #7386D5;
+  color: #fff;
+  transition: all 0.3s;
 }
-
-/* Modal Content/Box */
-#modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+#orderSubmit {
+  margin: 20px;
 }
-
-#order-items {
-  z-index: 1000;
+#orderList{
+  background-color: #263238;
+  color: white;
+  text-align: center;
+  font-size: 25px;
 }
-/* The Close Button */
-#modal-exit {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+#orderBody{
+  box-sizing: content-box;
 }
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-} 
+ #page-container2 {
+  position: relative;
+  min-height: 100vh;
+}
+#content-wrap2{
+  padding-bottom: 2.5rem;   
+}
+/*
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 100hv;
+  background-color: #F5F5F5;
+  color: rgb(124, 124, 124);
+  padding: 2%;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+*/
+#footer {
+  background-color: #F5F5F5;
+  color: rgb(124, 124, 124);;
+  font-size:.8em;
+  margin-top:25px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  text-align: center;
+  }
+  @media only screen and (max-width: 767px){
+    footer {
+      background-color: #F5F5F5;
+      color: rgb(124, 124, 124);;
+      font-size:.8em;
+      margin-top:25px;
+      padding-top: 15px;
+      padding-bottom: 10px;
+      position:static;
+      left:0;
+      bottom:0;
+      width:100%;
+      text-align: center;
+    }
+}
